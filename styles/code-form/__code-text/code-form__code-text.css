@@ -1,0 +1,40 @@
+.code-form__code-text {
+  padding: 10px;
+  line-height: 1.5;
+  color: #393318;
+  font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+}
+
+.code-form__code-text__comment {
+  color: #8e8e8e;
+  font-style: italic;
+}
+
+.code-form__code-text__tab {
+  margin-left: 50px;
+}
+
+.code-form__code-text__double-tab {
+  margin-left: 100px;
+}
+
+.code-form__code-text__pink {
+  color: #e04ad8;
+  font-weight: bold;
+}
+
+.code-form__code-text__blue {
+  color: #3aa6ff;
+}
+
+.code-form__code-text__red {
+  color: #cc2828;
+}
+
+.code-form__code-text__orange {
+  color: #d88d15;
+}
+
+.code-form__code-text__green {
+  color: #1dc174;
+}

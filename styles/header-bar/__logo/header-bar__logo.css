@@ -1,0 +1,21 @@
+.header-bar__logo {
+  margin-left: 20%;
+  float: left;
+}
+
+.header-bar__logo__img {
+    margin-right: 3px;
+    float: left;
+    height: 40px;
+    padding: 18px 0px;
+}
+
+.header-bar__logo__title {
+  height: 100%;
+  float: right;
+  font-size: 30px;
+  margin: 0px;
+  padding: 21px 0px;
+  font-weight: bold;
+  color: #fff !important;
+}

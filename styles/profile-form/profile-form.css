@@ -1,0 +1,13 @@
+.profile-form__avatar {
+  float: left;
+  width: 30%;
+}
+
+.profile-form__avatar__img {
+  width: 100%;
+}
+
+.profile-form__info {
+  float: right;
+  width: 65%;
+}

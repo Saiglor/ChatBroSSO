@@ -1,0 +1,43 @@
+.registration-form {
+  width: 420px;
+  height: 220px;
+  background-color: #dcf7f1;
+  box-shadow: 0 0 8px rgba(122,122,122,0.5);
+  padding: 0 30px;
+}
+
+.registration-form__title {
+  font-size: 20px;
+  padding-top: 32px;
+  color: #00664c;
+}
+
+.registration-form__input-name {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+.registration-form__input-checkbox {
+  width: 100%;
+  padding: 7px 0px;
+  color: #5f6366;
+}
+
+.registration-form__input-button {
+  width: 100%;
+  height: 35px;
+  border: 0px;
+  margin-top: 14px;
+  border-color: #c61801;
+  background-color: #c61801;
+  color: white;
+}
+
+.registration-form__input-button:hover {
+  border-color: #A61300;
+  background-color: #A61300;
+  color: white;
+}

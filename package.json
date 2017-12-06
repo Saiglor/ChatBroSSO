@@ -1,0 +1,17 @@
+{
+  "name": "chatbro_test",
+  "version": "1.0.0",
+  "description": "This is test.",
+  "main": "chatbro_test.js",
+  "scripts": {
+    "start": "node chatbro_test.js"
+  },
+  "author": "Sonechka",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mustache": "^2.3.0",
+    "pug": "^2.0.0-rc.4"
+  }
+}

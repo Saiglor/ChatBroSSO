@@ -1,0 +1,262 @@
+doctype html
+html
+  head
+    script.
+      function ChatbroLoader(chats,async) {
+        async=!1!==async;
+
+        var params= {
+          embedChatsParameters:chats instanceof Array?chats:[chats],
+          lang:navigator.language||navigator.userLanguage,
+          needLoadCode:'undefined'==typeof Chatbro,
+          embedParamsVersion:localStorage.embedParamsVersion,
+          chatbroScriptVersion:localStorage.chatbroScriptVersion
+        },
+
+        xhr=new XMLHttpRequest;
+        xhr.withCredentials=!0,xhr.onload=function() {
+          eval(xhr.responseText)
+        },
+
+        xhr.onerror=function() {
+          console.error('Chatbro loading error')
+        },
+
+        xhr.open('GET','//www.chatbro.com/embed.js?' +
+          btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),
+          xhr.send()
+      }
+      ChatbroLoader({encodedChatId: '6aNy',
+        siteDomain: '#{domain}',
+        siteUserExternalId: '#{userId}',
+        siteUserFullName: '#{userName}',
+        siteUserAvatarUrl: '#{urlAvatar}',
+        siteUserProfileUrl: '#{urlProfile}',
+        permissions: #{permissionsStr},
+        signature: '#{hash}'});
+        
+    link(rel="shortcut icon" href="/images/favicon_small.png" type="image/png")
+      
+    link(rel='stylesheet' type='text/css' href='./styles/body/body.css')
+		
+    link(rel='stylesheet' type='text/css' href='./styles/text/text.css')
+    
+    link(rel='stylesheet' type='text/css' href='./styles/header-bar/header-bar.css')
+    link(rel='stylesheet' type='text/css' href='./styles/header-bar/__logo/header-bar__logo.css')
+    link(rel='stylesheet' type='text/css' href='./styles/header-bar/__link-list/header-bar__link-list.css')
+      
+    link(rel='stylesheet' type='text/css' href='./styles/block/block.css')
+    link(rel='stylesheet' type='text/css' href='./styles/form/form.css')
+      
+    link(rel='stylesheet' type='text/css' href='./styles/chatBro/chatBro.css')
+    
+    link(rel='stylesheet' type='text/css' href='./styles/title/title.css')
+    
+    link(rel='stylesheet' type='text/css' href='./styles/code/code.css')
+    link(rel='stylesheet' type='text/css' href='./styles/code-form-for-title/code-form-for-title.css')
+    link(rel='stylesheet' type='text/css' href='./styles/code-form/code-form.css')
+    link(rel='stylesheet' type='text/css' href='./styles/code-form/__code-text/code-form__code-text.css')
+      
+    title Пример использования ChatBro
+        
+  body
+    div(class='header-bar')
+      a(class='header-bar__logo' href='/logbox')
+        img(class='header-bar__logo__img' src='./images/favicon.png')
+        p(class='header-bar__logo__title') ChatBro
+      div(class='header-bar__link-list')
+        div(style='float: left; height: 4em')
+          a(class='header-bar__link-list__form' href='/profile')
+            img(class='header-bar__link-list__form__img' src='./images/cat_avatar.jpeg')
+            p(class='header-bar__link-list__form__link') #{userName}
+            div(style='clear: both')
+          div(class='header-bar__link-list__form__separator')
+          div(style='clear: both')
+        a(class='header-bar__link-list__form' style='float: right' href='/')
+          p(class='header-bar__link-list__form__link' style='padding: 0px') Выйти
+        div(style='clear: both')
+         
+    div(class='block')
+      div(class='form' style='height: 368px')
+        p(class='title') Добро пожаловать, #{userName}!
+        p(class='text') Теперь ваш ник будет использован в чате. Удалять сообщения или банить пользователей можно нажав на меню сообщения в чате.
+        div(class='chatBro' style='height: 270px')
+          div(id='chatbro' style='height: 100%')
+        
+    div(class='block')
+      div(class='code')
+        p(class='title') Как реализована эта страница на node.js
+        div(class='code-form-for-title')
+          p(class='code-form-for-title__text-title') Отрывок из logbox.pug (ссылка на гит):
+          div(class='code-form')
+            p(class='code-form__code-text')
+              span(class='code-form__code-text__comment') //Объявляем переменные
+              br
+              br
+              span(class='code-form__code-text__comment') //Домен, на котором установлен чат
+              br
+              span(class='code-form__code-text__pink') const 
+              | domain = 
+              span(class='code-form__code-text__green') 'www.chatbro.com'
+              | ;
+              br
+              span(class='code-form__code-text__comment') //Секретный ключ, полученный на сайте
+              br
+              span(class='code-form__code-text__pink') const 
+              | key = 
+              span(class='code-form__code-text__green') '12b028c2-95e6-4297-8afd-0eb612c3d8fd'
+              | ;
+              br
+              span(class='code-form__code-text__comment') //Id пользователя на сайте установившем чат
+              br
+              span(class='code-form__code-text__pink') let 
+              | userId = Math.
+              span(class='code-form__code-text__blue') floor
+              | ((Math.
+              span(class='code-form__code-text__blue') random
+              | () * 100) + 1); 
+              span(class='code-form__code-text__comment') //Для примера вычисляем рандомом
+              br
+              span(class='code-form__code-text__comment') //Имя пользователя на сайте установившем чат
+              br
+              span(class='code-form__code-text__pink') let 
+              | userName;
+              br
+              span(class='code-form__code-text__comment') //Url аватара пользователя на сайте установившем чат
+              br
+              span(class='code-form__code-text__pink') const 
+              | urlAvatar = 
+              span(class='code-form__code-text__green') 'http://localhost:91/images/cat_avatar.jpeg'
+              | ;
+              br
+              span(class='code-form__code-text__comment') //Ссылка на профиль пользователя на сайте установившем чат
+              br
+              span(class='code-form__code-text__pink') const 
+              | urlProfile = 
+              span(class='code-form__code-text__green') 'http://localhost:91/profile'
+              | ;
+              br
+              span(class='code-form__code-text__comment') //Строка допустимых методов модерации
+              br
+              span(class='code-form__code-text__pink') let 
+              | permissionsStr;
+              br
+              span(class='code-form__code-text__comment') //Рассчитаем хеш
+              br
+              span(class='code-form__code-text__pink') let 
+              | hash = crypto.createHash(
+              span(class='code-form__code-text__green') 'md5'
+              | ).update(domain + userId + userName + urlAvatar + urlProfile + permissions + key).digest(
+              span(class='code-form__code-text__green') 'hex'
+              | );
+              br
+              br
+              span(class='code-form__code-text__comment') //Считываем введенные данные из первого окна
+              br
+              br
+              span(class='code-form__code-text__red') app
+              | .
+              span(class='code-form__code-text__blue') post
+              | (
+              span(class='code-form__code-text__green') '/LogIn'
+              | , function(req, res, next) {
+              span(class='code-form__code-text__comment')  //LogIn - обработчик формы регистрации
+              br
+              span(class='code-form__code-text__tab') userName = 
+              span(class='code-form__code-text__red') req.body.full_name
+              | ; 
+              span(class='code-form__code-text__comment') //full_name - имя поля ввода имени
+              br
+              span(class='code-form__code-text__tab') permissionsStr = 
+              span(class='code-form__code-text__green') '['
+              | ;
+              br
+              br
+              span(class='code-form__code-text__pink code-form__code-text__tab') if
+              |  (
+              span(class='code-form__code-text__red') req.body.ban_check
+              |  == 
+              span(class='code-form__code-text__green') 'on'
+              | ) 
+              span(class='code-form__code-text__comment') //ban_check - checkbox с выбором возможности банить
+              br
+              span(class='code-form__code-text__double-tab') permissionsStr += 
+              span(class='code-form__code-text__green') '\''
+              |  + 
+              span(class='code-form__code-text__green') 'ban'
+              |  + 
+              span(class='code-form__code-text__green') '\', '
+              | ;
+              br
+              span(class='code-form__code-text__pink code-form__code-text__tab') if
+              |  (
+              span(class='code-form__code-text__red') req.body.del_check
+              |  == 
+              span(class='code-form__code-text__green') 'on'
+              | ) 
+              span(class='code-form__code-text__comment') //del_check - checkbox с выбором возможности удалять
+              br
+              span(class='code-form__code-text__double-tab') permissionsStr += 
+              span(class='code-form__code-text__green') '\''
+              |  + 
+              span(class='code-form__code-text__green') 'delete'
+              |  + 
+              span(class='code-form__code-text__green') '\', '
+              | ;
+              br
+              br
+              span(class='code-form__code-text__tab') permissionsStr += 
+              span(class='code-form__code-text__green') ']'
+              | ;
+              br
+              br
+              span(class='code-form__code-text__red code-form__code-text__tab') res
+              | .
+              span(class='code-form__code-text__blue') redirect
+              | (
+              span(class='code-form__code-text__green') '/logbox'
+              | );
+              br
+              | });
+          p(class='code-form-for-title__text-title') Отрывок из logbox.pug (ссылка на гит):
+          div(class='code-form')
+            p(class='code-form__code-text')
+              span(class='code-form__code-text__blue') ChatbroLoader
+              | ({encodedChatId: 
+              span(class='code-form__code-text__green') '6aNy'
+              | ,
+              br
+              span(class='code-form__code-text__tab') siteDomain: 
+              span(class='code-form__code-text__green') '#
+              span(class='code-form__code-text__green') {domain}'
+              | , 
+              br
+              span(class='code-form__code-text__tab') siteUserExternalId: 
+              span(class='code-form__code-text__green') '#
+              span(class='code-form__code-text__green') {userId}'
+              | ,
+              br
+              span(class='code-form__code-text__tab') siteUserFullName: 
+              span(class='code-form__code-text__green') '#
+              span(class='code-form__code-text__green') {userName}'
+              | ,
+              br
+              span(class='code-form__code-text__tab') siteUserAvatarUrl: 
+              span(class='code-form__code-text__green') '#
+              span(class='code-form__code-text__green') {urlAvatar}'
+              | ,
+              br
+              span(class='code-form__code-text__tab') siteUserProfileUrl: 
+              span(class='code-form__code-text__green') '#
+              span(class='code-form__code-text__green') {urlProfile}'
+              | ,
+              br
+              span(class='code-form__code-text__tab') permissions: 
+              span(class='code-form__code-text__green') #
+              span(class='code-form__code-text__green') {permissionsStr}
+              | ,
+              br
+              span(class='code-form__code-text__tab') signature: 
+              span(class='code-form__code-text__green') '#
+              span(class='code-form__code-text__green') {hash}'
+              | });

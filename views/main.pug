@@ -1,0 +1,161 @@
+doctype html
+html
+	head
+		script.
+			function ChatbroLoader(chats,async) {
+				async=!1!==async;
+
+				var params= {
+					embedChatsParameters:chats instanceof Array?chats:[chats],
+					lang:navigator.language||navigator.userLanguage,
+					needLoadCode:'undefined'==typeof Chatbro,
+					embedParamsVersion:localStorage.embedParamsVersion,
+					chatbroScriptVersion:localStorage.chatbroScriptVersion
+				},
+
+				xhr=new XMLHttpRequest;
+				xhr.withCredentials=!0,
+				xhr.onload=function() {
+					eval(xhr.responseText)
+				},
+
+				xhr.onerror=function() {
+					console.error('Chatbro loading error')
+				},
+
+				xhr.open('GET','//www.chatbro.com/embed.js?' +
+					btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),
+					xhr.send()
+			}
+			ChatbroLoader({encodedChatId: '6aNy',
+				siteDomain: '#{domain}',
+				signature: '#{hash}'});
+				
+		link(rel="shortcut icon" href="/images/favicon_small.png" type="image/png")
+			
+		link(rel='stylesheet' type='text/css' href='./styles/body/body.css')
+			
+		link(rel='stylesheet' type='text/css' href='./styles/text/text.css')
+			
+		link(rel='stylesheet' type='text/css' href='./styles/header-bar/header-bar.css')
+		link(rel='stylesheet' type='text/css' href='./styles/header-bar/__logo/header-bar__logo.css')
+		link(rel='stylesheet' type='text/css' href='./styles/header-bar/__link-list/header-bar__link-list.css')
+			
+		link(rel='stylesheet' type='text/css' href='./styles/block/block.css')
+		link(rel='stylesheet' type='text/css' href='./styles/form/form.css')
+		link(rel='stylesheet' type='text/css' href='./styles/registration-form/registration-form.css')
+			
+		link(rel='stylesheet' type='text/css' href='./styles/chatBro/chatBro.css')
+			
+		link(rel='stylesheet' type='text/css' href='./styles/title/title.css')
+			
+		link(rel='stylesheet' type='text/css' href='./styles/code/code.css')
+		link(rel='stylesheet' type='text/css' href='./styles/code-form-for-title/code-form-for-title.css')
+		link(rel='stylesheet' type='text/css' href='./styles/code-form/code-form.css')
+		link(rel='stylesheet' type='text/css' href='./styles/code-form/__code-text/code-form__code-text.css')
+			
+		title Пример использования ChatBro
+		
+	body(class='body')
+		div(class='header-bar')
+			a(class='header-bar__logo' href='/')
+				img(class='header-bar__logo__img' src='./images/favicon.png')
+				p(class='header-bar__logo__title') ChatBro
+			div(class='header-bar__link-list')
+				a(class='header-bar__link-list__form')
+					img(class='header-bar__link-list__form__img' src='./images/icons-guest.png')
+					p(class='header-bar__link-list__form__link') Гость
+					div(style='clear: both')
+			div(style='clear: both')
+		
+		div(class='block' style='box-shadow: 0 0; background-color: #e2e2e2')
+			div(class='block' style='width: 60%; float: left; margin: 0px; height: 410px')
+				div(class='form')
+					p(class='title') Пример прозрачной аутентификации
+					form(class='registration-form' style='margin: 0px auto; height: 80%' action='/LogIn' method='POST')
+						p(class='registration-form__title') Вход
+						input(class='registration-form__input-name' placeholder="Логин" name='full_name' required)
+						div(class='registration-form__input-checkbox')
+							input(type='checkbox' name='ban_check' id='check1')
+							label(for='check1') Возможность банить пользователей
+						div(class='registration-form__input-checkbox')
+							input(type='checkbox' name='del_check' id='check2')
+							label(for='check2') Возможность удалять пользователей
+						input(class='registration-form__input-button' type='submit' value='Далее')
+			div(class='block' style='width: 36%; float: right; margin: 0px; height: 410px')
+				div(class='chatBro')
+					div(id='chatbro' style='height: 100%')
+			div(style='clear: both')
+			
+		div(class='block')
+			div(class='code')
+				p(class='title') Как реализована эта страница на node.js
+				p(class='text') Сейчас вы гость. Попробуйте написать в чат и увидите предложение зайти через соц. сети или с временным именем. Но если вы заходили в аккаунт на chatbro.com, то будете отображаться под своим именем.
+				div(class='code-form-for-title')
+					p(class='code-form-for-title__text-title') Отрывок из index.js (ссылка на гит):
+					div(class='code-form')
+						p(class='code-form__code-text')
+							span(class='code-form__code-text__pink') const 
+							| domain = 
+							span(class='code-form__code-text__green') 'www.chatbro.com'
+							| ;
+							br
+							span(class='code-form__code-text__pink') const 
+							| secretKey = 
+							span(class='code-form__code-text__green') '12b028c2-95e6-4297-8afd-0eb612c3d8fd'
+							| ; 
+							span(class='code-form__code-text__comment') //Секретный ключ указанный в личном кабинете на chatbto.com
+							br
+							br
+							span(class='code-form__code-text__comment') //Рассчитываем хеш и передаем параметры на разметку
+							br
+							span(class='code-form__code-text__red') app
+							| .
+							span(class='code-form__code-text__blue') get
+							| (
+							span(class='code-form__code-text__green') '/'
+							| , function(req, res) {
+							br
+							span(class='code-form__code-text__pink code-form__code-text__tab') let
+							|  hash = 
+							span(class='code-form__code-text__red') crypto
+							| .createHash(
+							span(class='code-form__code-text__green') 'md5'
+							| ).update(domain + key).digest(
+							span(class='code-form__code-text__green') 'hex'
+							| );
+							br
+							br
+							span(class='code-form__code-text__tab code-form__code-text__red') res
+							| .
+							span(class='code-form__code-text__blue') render
+							| (
+							span(class='code-form__code-text__green') 'main.pug'
+							| , {
+							br
+							span(class='code-form__code-text__double-tab')  domain,
+							br
+							span(class='code-form__code-text__double-tab') hash
+							br
+							span(class='code-form__code-text__tab') });
+							br
+							| });
+				div(class='code-form-for-title')
+					p(class='code-form-for-title__text-title') Отрывок из main.pug (ссылка на гит):
+					div(class='code-form')
+						p(class='code-form__code-text')
+							span(class='code-form__code-text__blue') ChatbroLoader
+							| ({encodedChatId: 
+							span(class='code-form__code-text__green') '6aNy'
+							| , 
+							span(class='code-form__code-text__comment') //Уникальный идентификатор чата
+							br
+							span(class='code-form__code-text__tab') siteDomain: 
+							span(class='code-form__code-text__green') '#
+							span(class='code-form__code-text__green') {domain}'
+							| ,
+							br
+							span(class='code-form__code-text__tab') signature: 
+							span(class='code-form__code-text__green') '#
+							span(class='code-form__code-text__green') {hash}'
+							| });

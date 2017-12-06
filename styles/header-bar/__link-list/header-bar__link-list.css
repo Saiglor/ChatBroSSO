@@ -1,0 +1,45 @@
+.header-bar__link-list {
+	float: right;
+	height: 4em;
+  line-height: 4em;
+	text-align: center;
+	text-decoration: none;
+	font-size: 19px;
+	margin-right: 20%;
+	overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.header-bar__link-list__form {
+	height: 100%;
+	padding: 0px 10px;
+	display: inline-block;
+	color: #f2f2f2;
+}
+
+.header-bar__link-list__form:hover {
+	background-color: #006C51;
+}
+
+.header-bar__link-list__form__separator {
+	border-right: 1px solid #145b4d;
+	height: 3em;
+	margin: 9px 0px;
+	float: right
+}
+
+.header-bar__link-list__form__img {
+  border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	padding: 13px 0px;
+	float: left;
+}
+
+.header-bar__link-list__form__link {
+	height: 100%;
+	padding-left: 15px;
+	margin: 0px;
+	float: right;
+}
