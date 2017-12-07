@@ -46,8 +46,10 @@ app.post('/LogIn', function(req, res, next) {
 });
 
 app.get('/logbox', function(req, res) {
+  let permStr = permissions.toString().replace(',', '');
+
   let hash = crypto.createHash('md5').update(domain + userId + userName +
-    urlAvatar + urlProfile + permissions + key).digest('hex');
+    urlAvatar + urlProfile + permStr + key).digest('hex');
 
   let permissionsStr = '[';
   for (let i = 0; i < permissions.length; i++) {
