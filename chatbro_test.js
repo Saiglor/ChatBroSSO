@@ -15,7 +15,7 @@ let userName;
 //Url аватара пользователя на сайте установившем чат
 const urlAvatar = 'http://localhost:91/images/cat_avatar.jpeg';
 //Ссылка на профиль пользователя на сайте установившем чат
-const urlProfile = 'http://localhost:91/profile';
+const urlProfile = '/profile';
 //Массив допустимых методов модерации
 let permissions = [];
 

@@ -17,20 +17,21 @@ html
       
   body
     div(class='header-bar')
-      a(class='header-bar__logo' href='/logbox')
-        img(class='header-bar__logo__img' src='./images/favicon.png')
-        p(class='header-bar__logo__title') ChatBro
-      div(class='header-bar__link-list')
-        div(style='float: left; height: 4em')
-          a(class='header-bar__link-list__form' href='/profile')
-            img(class='header-bar__link-list__form__img' src='./images/cat_avatar.jpeg')
-            p(class='header-bar__link-list__form__link') #{userName}
+      div(class='header-bar__basis')
+        a(class='header-bar__logo' href='/logbox')
+          img(class='header-bar__logo__img' src='./images/favicon.png')
+          p(class='header-bar__logo__title') ChatBro
+        div(class='header-bar__link-list')
+          div(style='float: left; height: 4em')
+            a(class='header-bar__link-list__form' href='/profile')
+              img(class='header-bar__link-list__form__img' src='./images/cat_avatar.jpeg')
+              p(class='header-bar__link-list__form__link') #{userName}
+              div(style='clear: both')
+            div(class='header-bar__link-list__form__separator')
             div(style='clear: both')
-          div(class='header-bar__link-list__form__separator')
+          a(class='header-bar__link-list__form' style='float: right' href='/')
+            p(class='header-bar__link-list__form__link' style='padding: 0px') Выйти
           div(style='clear: both')
-        a(class='header-bar__link-list__form' style='float: right' href='/')
-          p(class='header-bar__link-list__form__link' style='padding: 0px') Выйти
-        div(style='clear: both')
           
     div(class='block')
       div(class='form' style='height: 327px')

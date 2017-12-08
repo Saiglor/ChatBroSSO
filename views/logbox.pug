@@ -61,20 +61,21 @@ html
         
   body
     div(class='header-bar')
-      a(class='header-bar__logo' href='/logbox')
-        img(class='header-bar__logo__img' src='./images/favicon.png')
-        p(class='header-bar__logo__title') ChatBro
-      div(class='header-bar__link-list')
-        div(style='float: left; height: 4em')
-          a(class='header-bar__link-list__form' href='/profile')
-            img(class='header-bar__link-list__form__img' src='./images/cat_avatar.jpeg')
-            p(class='header-bar__link-list__form__link') #{userName}
+      div(class='header-bar__basis')
+        a(class='header-bar__logo' href='/logbox')
+          img(class='header-bar__logo__img' src='./images/favicon.png')
+          p(class='header-bar__logo__title') ChatBro
+        div(class='header-bar__link-list')
+          div(style='float: left; height: 4em')
+            a(class='header-bar__link-list__form' href='/profile')
+              img(class='header-bar__link-list__form__img' src='./images/cat_avatar.jpeg')
+              p(class='header-bar__link-list__form__link') #{userName}
+              div(style='clear: both')
+            div(class='header-bar__link-list__form__separator')
             div(style='clear: both')
-          div(class='header-bar__link-list__form__separator')
+          a(class='header-bar__link-list__form' style='float: right' href='/')
+            p(class='header-bar__link-list__form__link' style='padding: 0px') Выйти
           div(style='clear: both')
-        a(class='header-bar__link-list__form' style='float: right' href='/')
-          p(class='header-bar__link-list__form__link' style='padding: 0px') Выйти
-        div(style='clear: both')
          
     div(class='block')
       div(class='form' style='height: 368px')
@@ -135,35 +136,14 @@ html
               br
               span(class='code-form__code-text__pink') const 
               | urlProfile = 
-              span(class='code-form__code-text__green') 'http://localhost:91/profile'
-              | ;
+              span(class='code-form__code-text__green') '/profile'
+              | ; 
+              span(class='code-form__code-text__comment') //Относительная ссылка до профиля
               br
               span(class='code-form__code-text__comment') //Строка допустимых методов модерации
               br
               span(class='code-form__code-text__pink') let 
               | permissionsStr;
-              br
-              span(class='code-form__code-text__comment') //Рассчитаем хеш
-              br
-              br
-              span(class='code-form__code-text__pink') let 
-              | permStr = permissions.
-              span(class='code-form__code-text__blue') toString
-              | ().
-              span(class='code-form__code-text__blue') replace
-              | (
-              span(class='code-form__code-text__green') ','
-              | , 
-              span(class='code-form__code-text__green') ''
-              | ); 
-              span(class='code-form__code-text__comment') //'ban' + 'delete' без запятой, порядок важен
-              br
-              span(class='code-form__code-text__pink') let 
-              | hash = crypto.createHash(
-              span(class='code-form__code-text__green') 'md5'
-              | ).update(domain + userId + userName + urlAvatar + urlProfile + permStr + key).digest(
-              span(class='code-form__code-text__green') 'hex'
-              | );
               br
               br
               span(class='code-form__code-text__comment') //Считываем введенные данные из первого окна
@@ -222,7 +202,8 @@ html
               br
               span(class='code-form__code-text__tab') permissionsStr += 
               span(class='code-form__code-text__green') ']'
-              | ;
+              | ; 
+              span(class='code-form__code-text__comment') //Пример итога: '[ban, delete]'
               br
               br
               span(class='code-form__code-text__red code-form__code-text__tab') res
@@ -233,6 +214,43 @@ html
               | );
               br
               | });
+              br
+              br
+              span(class='code-form__code-text__comment') //Рассчитаем хеш
+              br
+              br
+              span(class='code-form__code-text__pink') let 
+              | permStr = permissionsStr.
+              span(class='code-form__code-text__blue') toString
+              | ()
+              br
+              span(class='code-form__code-text__tab') .
+              span(class='code-form__code-text__blue') replace
+              | (
+              span(class='code-form__code-text__green') ', '
+              | , 
+              span(class='code-form__code-text__green') ''
+              | ).
+              span(class='code-form__code-text__blue') replace
+              | (
+              span(class='code-form__code-text__green') '['
+              | , 
+              span(class='code-form__code-text__green') ''
+              | ).
+              span(class='code-form__code-text__blue') replace
+              | (
+              span(class='code-form__code-text__green') ']'
+              | , 
+              span(class='code-form__code-text__green') ''
+              | ); 
+              span(class='code-form__code-text__comment') //Должно получится 'bandelete', 'ban' или 'delete'
+              br
+              span(class='code-form__code-text__pink') let 
+              | hash = crypto.createHash(
+              span(class='code-form__code-text__green') 'md5'
+              | ).update(domain + userId + userName + urlAvatar + urlProfile + permStr + key).digest(
+              span(class='code-form__code-text__green') 'hex'
+              | );
           p(class='code-form-for-title__text-title') Отрывок из 
             a(href='https://github.com/SviatoIa/ChatBroSSO/blob/86848685bf397f0247444131735886caac72875a/views/logbox.pug#L29-L36') logbox.pug
             | :
