@@ -32,8 +32,9 @@ html
         siteUserFullName: '#{userName}',
         siteUserAvatarUrl: '#{urlAvatar}',
         siteUserProfileUrl: '#{urlProfile}',
-        permissions: #{permissionsStr},
-        signature: '#{hash}'});
+        permissions: '#{permissionsStr}',
+        signature: '#{hash}',
+        chatLanguage: '#{gettext("en")}'});
         
     link(rel="shortcut icon" href="/images/favicon_small.png" type="image/png")
       
@@ -57,7 +58,7 @@ html
     link(rel='stylesheet' type='text/css' href='./styles/code-form/code-form.css')
     link(rel='stylesheet' type='text/css' href='./styles/code-form/__code-text/code-form__code-text.css')
       
-    title Пример использования ChatBro
+    title #{gettext('Sample program ChatBro')}
         
   body
     div(class='header-bar')
@@ -74,43 +75,43 @@ html
             div(class='header-bar__link-list__form__separator')
             div(style='clear: both')
           a(class='header-bar__link-list__form' style='float: right' href='/')
-            p(class='header-bar__link-list__form__link' style='padding: 0px') Выйти
+            p(class='header-bar__link-list__form__link' style='padding: 0px') #{gettext('Exit')}
           div(style='clear: both')
          
     div(class='block')
       div(class='form' style='height: 368px')
-        p(class='title') Добро пожаловать, #{userName}!
-        p(class='text') Теперь ваш ник будет использован в чате. Удалять сообщения или банить пользователей можно нажав на меню сообщения в чате.
+        p(class='title') #{gettext('Welcome')}, #{userName}!
+        p(class='text') #{gettext('Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users.')}
         div(class='chatBro' style='height: 270px')
           div(id='chatbro' style='height: 100%')
         
     div(class='block')
       div(class='code')
-        p(class='title') Как реализована эта страница на node.js
+        p(class='title') #{gettext('How is this page implemented on node.js')}
         div(class='code-form-for-title')
-          p(class='code-form-for-title__text-title') Отрывок из 
+          p(class='code-form-for-title__text-title') #{gettext('Code snippet')} (
             a(href='https://github.com/SviatoIa/ChatBroSSO/blob/86848685bf397f0247444131735886caac72875a/chatbro_test.js#L7-L46') chatbro_test.js
-            | :
+            | ):
           div(class='code-form')
             p(class='code-form__code-text')
-              span(class='code-form__code-text__comment') //Объявляем переменные
+              span(class='code-form__code-text__comment') //#{gettext('Declare variables')}
               br
               br
-              span(class='code-form__code-text__comment') //Домен, на котором установлен чат
+              span(class='code-form__code-text__comment') //#{gettext('Chat domain')}
               br
               span(class='code-form__code-text__pink') const 
               | domain = 
               span(class='code-form__code-text__green') 'localhost'
               | ;
               br
-              span(class='code-form__code-text__comment') //Секретный ключ, полученный на сайте
+              span(class='code-form__code-text__comment') //#{gettext('The secret key from the site')}
               br
               span(class='code-form__code-text__pink') const 
               | key = 
               span(class='code-form__code-text__green') '12b028c2-95e6-4297-8afd-0eb612c3d8fd'
               | ;
               br
-              span(class='code-form__code-text__comment') //Id пользователя на сайте установившем чат
+              span(class='code-form__code-text__comment') //#{gettext('Your site user id')}
               br
               span(class='code-form__code-text__pink') let 
               | userId = Math.
@@ -118,35 +119,35 @@ html
               | ((Math.
               span(class='code-form__code-text__blue') random
               | () * 100) + 1); 
-              span(class='code-form__code-text__comment') //Для примера вычисляем рандомом
+              span(class='code-form__code-text__comment') //#{gettext('For example, use random')}
               br
-              span(class='code-form__code-text__comment') //Имя пользователя на сайте установившем чат
+              span(class='code-form__code-text__comment') //#{gettext('User name')}
               br
               span(class='code-form__code-text__pink') let 
               | userName;
               br
-              span(class='code-form__code-text__comment') //Url аватара пользователя на сайте установившем чат
+              span(class='code-form__code-text__comment') //#{gettext('User avatar url')}
               br
               span(class='code-form__code-text__pink') const 
               | urlAvatar = 
               span(class='code-form__code-text__green') 'http://localhost:91/images/cat_avatar.jpeg'
               | ;
               br
-              span(class='code-form__code-text__comment') //Ссылка на профиль пользователя на сайте установившем чат
+              span(class='code-form__code-text__comment') //#{gettext('User profile url')}
               br
               span(class='code-form__code-text__pink') const 
               | urlProfile = 
               span(class='code-form__code-text__green') '/profile'
               | ; 
-              span(class='code-form__code-text__comment') //Относительная ссылка до профиля
+              span(class='code-form__code-text__comment') //#{gettext('Relative reference to the profile')}
               br
-              span(class='code-form__code-text__comment') //Строка допустимых методов модерации
+              span(class='code-form__code-text__comment') //#{gettext('An string of allowed moderation methods')}
               br
               span(class='code-form__code-text__pink') let 
               | permissionsStr;
               br
               br
-              span(class='code-form__code-text__comment') //Считываем введенные данные из первого окна
+              span(class='code-form__code-text__comment') //#{gettext('Read data from the first window')}
               br
               br
               span(class='code-form__code-text__red') app
@@ -155,12 +156,12 @@ html
               | (
               span(class='code-form__code-text__green') '/LogIn'
               | , function(req, res, next) {
-              span(class='code-form__code-text__comment')  //LogIn - обработчик формы регистрации
+              span(class='code-form__code-text__comment')  //LogIn - #{gettext("'action' of the form")}
               br
               span(class='code-form__code-text__tab') userName = 
               span(class='code-form__code-text__red') req.body.full_name
               | ; 
-              span(class='code-form__code-text__comment') //full_name - имя поля ввода имени
+              span(class='code-form__code-text__comment') //full_name - #{gettext('the input field name')}
               br
               span(class='code-form__code-text__tab') permissionsStr = 
               span(class='code-form__code-text__green') '['
@@ -173,7 +174,7 @@ html
               |  == 
               span(class='code-form__code-text__green') 'on'
               | ) 
-              span(class='code-form__code-text__comment') //ban_check - checkbox с выбором возможности банить
+              span(class='code-form__code-text__comment') //ban_check - #{gettext("checkbox with options 'ban'")}
               br
               span(class='code-form__code-text__double-tab') permissionsStr += 
               span(class='code-form__code-text__green') '\''
@@ -189,7 +190,7 @@ html
               |  == 
               span(class='code-form__code-text__green') 'on'
               | ) 
-              span(class='code-form__code-text__comment') //del_check - checkbox с выбором возможности удалять
+              span(class='code-form__code-text__comment') //del_check - #{gettext('checkbox with options delete message')}
               br
               span(class='code-form__code-text__double-tab') permissionsStr += 
               span(class='code-form__code-text__green') '\''
@@ -203,7 +204,7 @@ html
               span(class='code-form__code-text__tab') permissionsStr += 
               span(class='code-form__code-text__green') ']'
               | ; 
-              span(class='code-form__code-text__comment') //Пример итога: '[ban, delete]'
+              span(class='code-form__code-text__comment') //#{gettext('Example')}: '[ban, delete]'
               br
               br
               span(class='code-form__code-text__red code-form__code-text__tab') res
@@ -216,7 +217,7 @@ html
               | });
               br
               br
-              span(class='code-form__code-text__comment') //Рассчитаем хеш
+              span(class='code-form__code-text__comment') //#{gettext('Calculate the hash')}
               br
               br
               span(class='code-form__code-text__pink') let 
@@ -243,7 +244,7 @@ html
               | , 
               span(class='code-form__code-text__green') ''
               | ); 
-              span(class='code-form__code-text__comment') //Должно получится 'bandelete', 'ban' или 'delete'
+              span(class='code-form__code-text__comment') //#{gettext("Options available: 'bandelete', 'ban' or 'delete'")}
               br
               span(class='code-form__code-text__pink') let 
               | hash = crypto.createHash(
@@ -251,9 +252,9 @@ html
               | ).update(domain + userId + userName + urlAvatar + urlProfile + permStr + key).digest(
               span(class='code-form__code-text__green') 'hex'
               | );
-          p(class='code-form-for-title__text-title') Отрывок из 
+          p(class='code-form-for-title__text-title') #{gettext('Code snippet')} (
             a(href='https://github.com/SviatoIa/ChatBroSSO/blob/86848685bf397f0247444131735886caac72875a/views/logbox.pug#L29-L36') logbox.pug
-            | :
+            | ):
           div(class='code-form')
             p(class='code-form__code-text')
               span(class='code-form__code-text__blue') ChatbroLoader
@@ -262,36 +263,29 @@ html
               | ,
               br
               span(class='code-form__code-text__tab') siteDomain: 
-              span(class='code-form__code-text__green') '#
-              span(class='code-form__code-text__green') {domain}'
+              span(class='code-form__code-text__green') '\#{domain}'
               | , 
               br
               span(class='code-form__code-text__tab') siteUserExternalId: 
-              span(class='code-form__code-text__green') '#
-              span(class='code-form__code-text__green') {userId}'
+              span(class='code-form__code-text__green') '\#{userId}'
               | ,
               br
               span(class='code-form__code-text__tab') siteUserFullName: 
-              span(class='code-form__code-text__green') '#
-              span(class='code-form__code-text__green') {userName}'
+              span(class='code-form__code-text__green') '\#{userName}'
               | ,
               br
               span(class='code-form__code-text__tab') siteUserAvatarUrl: 
-              span(class='code-form__code-text__green') '#
-              span(class='code-form__code-text__green') {urlAvatar}'
+              span(class='code-form__code-text__green') '\#{urlAvatar}'
               | ,
               br
               span(class='code-form__code-text__tab') siteUserProfileUrl: 
-              span(class='code-form__code-text__green') '#
-              span(class='code-form__code-text__green') {urlProfile}'
+              span(class='code-form__code-text__green') '\#{urlProfile}'
               | ,
               br
               span(class='code-form__code-text__tab') permissions: 
-              span(class='code-form__code-text__green') #
-              span(class='code-form__code-text__green') {permissionsStr}
+              span(class='code-form__code-text__green') \#{permissionsStr}
               | ,
               br
               span(class='code-form__code-text__tab') signature: 
-              span(class='code-form__code-text__green') '#
-              span(class='code-form__code-text__green') {hash}'
+              span(class='code-form__code-text__green') '\#{hash}'
               | });

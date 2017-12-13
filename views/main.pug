@@ -29,7 +29,8 @@ html
 			}
 			ChatbroLoader({encodedChatId: '6aNy',
 				siteDomain: '#{domain}',
-				signature: '#{hash}'});
+				signature: '#{hash}',
+				chatLanguage: '#{gettext("en")}'});
 				
 		link(rel="shortcut icon" href="/images/favicon_small.png" type="image/png")
 			
@@ -54,34 +55,34 @@ html
 		link(rel='stylesheet' type='text/css' href='./styles/code-form/code-form.css')
 		link(rel='stylesheet' type='text/css' href='./styles/code-form/__code-text/code-form__code-text.css')
 			
-		title Пример использования ChatBro
+		title #{gettext('Sample program ChatBro')}
 		
 	body(class='body')
 		div(class='header-bar')
 			div(class='header-bar__basis')
-				a(class='header-bar__logo' href='/')
+				a(class='header-bar__logo' href="?locale=en-US")
 					img(class='header-bar__logo__img' src='./images/favicon.png')
 					p(class='header-bar__logo__title') ChatBro
 				div(class='header-bar__link-list')
 					a(class='header-bar__link-list__form')
 						img(class='header-bar__link-list__form__img' src='./images/icons-guest.png')
-						p(class='header-bar__link-list__form__link') Гость
+						p(class='header-bar__link-list__form__link') #{gettext('Guest')}
 						div(style='clear: both')
 		
 		div(class='block' style='box-shadow: 0 0; background-color: #e2e2e2')
 			div(class='block' style='width: 60%; float: left; margin: 0px; height: 410px')
 				div(class='form')
-					p(class='title') Пример прозрачной аутентификации
+					p(class='title') #{gettext('Single Sign-On')}
 					form(class='registration-form' style='margin: 0px auto; height: 80%' action='/LogIn' method='POST')
-						p(class='registration-form__title') Вход
-						input(class='registration-form__input-name' placeholder="Логин" name='full_name' required)
+						p(class='registration-form__title') #{gettext('Sign In')}
+						input(class='registration-form__input-name' placeholder=gettext('Login') name='full_name' required)
 						div(class='registration-form__input-checkbox')
 							input(type='checkbox' name='ban_check' id='check1')
-							label(for='check1') Возможность банить пользователей
+							label(for='check1') #{gettext('The ability to ban users')} 
 						div(class='registration-form__input-checkbox')
 							input(type='checkbox' name='del_check' id='check2')
-							label(for='check2') Возможность удалять пользователей
-						input(class='registration-form__input-button' type='submit' value='Далее')
+							label(for='check2') #{gettext('The ability to delete messages')}
+						input(class='registration-form__input-button' type='submit' value=gettext('Next'))
 			div(class='block' style='width: 36%; float: right; margin: 0px; height: 410px')
 				div(class='chatBro')
 					div(id='chatbro' style='height: 100%')
@@ -89,12 +90,12 @@ html
 			
 		div(class='block')
 			div(class='code')
-				p(class='title') Как реализована эта страница на node.js
-				p(class='text') Сейчас вы гость. Попробуйте написать в чат и увидите предложение зайти через соц. сети или с временным именем. Но если вы заходили в аккаунт на chatbro.com, то будете отображаться под своим именем.
+				p(class='title') #{gettext('How is this page implemented on node.js')}
+				p(class='text') #{gettext('You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name.')}
 				div(class='code-form-for-title')
-					p(class='code-form-for-title__text-title') Отрывок из 
+					p(class='code-form-for-title__text-title') #{gettext('Code snippet')} (
 						a(href='https://github.com/SviatoIa/ChatBroSSO/blob/86848685bf397f0247444131735886caac72875a/chatbro_test.js#L7-L31') chatbro_test.js
-						| :
+						| ):
 					div(class='code-form')
 						p(class='code-form__code-text')
 							span(class='code-form__code-text__pink') const 
@@ -106,10 +107,10 @@ html
 							| secretKey = 
 							span(class='code-form__code-text__green') '12b028c2-95e6-4297-8afd-0eb612c3d8fd'
 							| ; 
-							span(class='code-form__code-text__comment') //Секретный ключ указанный в личном кабинете на chatbto.com
+							span(class='code-form__code-text__comment') //#{gettext('The secret key specified in your account on chatbto.com')}
 							br
 							br
-							span(class='code-form__code-text__comment') //Рассчитываем хеш и передаем параметры на разметку
+							span(class='code-form__code-text__comment') //#{gettext('Calculate the hash and pass parameters on the layout')}
 							br
 							span(class='code-form__code-text__red') app
 							| .
@@ -143,23 +144,21 @@ html
 							br
 							| });
 				div(class='code-form-for-title')
-					p(class='code-form-for-title__text-title') Отрывок из 
+					p(class='code-form-for-title__text-title') #{gettext('Code snippet')} (
 						a(href='https://github.com/SviatoIa/ChatBroSSO/blob/86848685bf397f0247444131735886caac72875a/views/main.pug#L30-L32') main.pug
-						| :
+						| ):
 					div(class='code-form')
 						p(class='code-form__code-text')
 							span(class='code-form__code-text__blue') ChatbroLoader
 							| ({encodedChatId: 
 							span(class='code-form__code-text__green') '6aNy'
 							| , 
-							span(class='code-form__code-text__comment') //Уникальный идентификатор чата
+							span(class='code-form__code-text__comment') //#{gettext('Unique chat identificator')}
 							br
 							span(class='code-form__code-text__tab') siteDomain: 
-							span(class='code-form__code-text__green') '#
-							span(class='code-form__code-text__green') {domain}'
+							span(class='code-form__code-text__green') '\#{domain}'
 							| ,
 							br
 							span(class='code-form__code-text__tab') signature: 
-							span(class='code-form__code-text__green') '#
-							span(class='code-form__code-text__green') {hash}'
+							span(class='code-form__code-text__green') '\#{hash}'
 							| });

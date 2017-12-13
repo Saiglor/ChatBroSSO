@@ -6,12 +6,12 @@
   "scripts": {
     "start": "node chatbro_test.js"
   },
-  "author": "Sonechka",
+  "author": "Sviatoslav",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "mustache": "^2.3.0",
+    "express-gettext": "^1.1.0",
     "pug": "^2.0.0-rc.4"
   }
 }

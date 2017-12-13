@@ -2,6 +2,8 @@ doctype html
 html
   head
     
+    link(rel="shortcut icon" href="/images/favicon_small.png" type="image/png")
+    
     link(rel='stylesheet' type='text/css' href='./styles/body/body.css')
 		
     link(rel='stylesheet' type='text/css' href='./styles/text/text.css')
@@ -14,6 +16,8 @@ html
     link(rel='stylesheet' type='text/css' href='./styles/form/form.css')
       
     link(rel='stylesheet' type='text/css' href='./styles/profile-form/profile-form.css')
+      
+    title #{gettext('Profile')}
       
   body
     div(class='header-bar')
@@ -30,7 +34,7 @@ html
             div(class='header-bar__link-list__form__separator')
             div(style='clear: both')
           a(class='header-bar__link-list__form' style='float: right' href='/')
-            p(class='header-bar__link-list__form__link' style='padding: 0px') Выйти
+            p(class='header-bar__link-list__form__link' style='padding: 0px') #{gettext('Exit')}
           div(style='clear: both')
           
     div(class='block')
@@ -39,7 +43,7 @@ html
           img(class='profile-form__avatar__img' src='./images/cat_avatar.jpeg')
         div(class='profile-form__info')
           p(class='text') id: #{userId}
-          p(class='text') Имя: #{userName}
-          p(class='text') Разрешения: #{permissionsStr}
+          p(class='text') #{gettext('Name')}: #{userName}
+          p(class='text') #{gettext('Permissions')}: #{permissionsStr}
         div(style='clear: both')
           

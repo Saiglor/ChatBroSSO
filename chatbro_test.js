@@ -1,22 +1,31 @@
 const pug = require('pug');
-const express = require('express')
+const express = require('express');
+const gettext = require('express-gettext');
 const crypto = require('crypto');
 const app = express();
 const bodyParser = require('body-parser');
 
-//Домен, на котором установлен чат
+// Gettext configuration
+app.use(gettext(app, {
+    directory: __dirname + '/locales',
+    useAcceptedLanguageHeader: true
+}));
+
+app.use(express.static(__dirname + '/public'));
+
+//Chat domain
 const domain = 'localhost';
-//Секретный ключ, полученный на сайте
+//The secret key from the site
 const key = '12b028c2-95e6-4297-8afd-0eb612c3d8fd';
-//Id пользователя на сайте установившем чат
+//Your site user id
 let userId = Math.floor((Math.random() * 100) + 1);
-//Имя пользователя на сайте установившем чат
+//User name
 let userName;
-//Url аватара пользователя на сайте установившем чат
-const urlAvatar = 'http://localhost:91/images/cat_avatar.jpeg';
-//Ссылка на профиль пользователя на сайте установившем чат
+//User avatar url
+const urlAvatar = '//localhost:91/images/cat_avatar.jpeg';
+//User profile url
 const urlProfile = '/profile';
-//Массив допустимых методов модерации
+//An array of allowed moderation methods
 let permissions = [];
 
 app.set('view engine','pug');
@@ -46,16 +55,12 @@ app.post('/LogIn', function(req, res, next) {
 });
 
 app.get('/logbox', function(req, res) {
-  let permStr = permissions.toString().replace(',', '');
+  let permissionsStr = permissions.toString();
 
   let hash = crypto.createHash('md5').update(domain + userId + userName +
-    urlAvatar + urlProfile + permStr + key).digest('hex');
+    urlAvatar + urlProfile + permissionsStr.replace(',', '') + key).digest('hex');
 
-  let permissionsStr = '[';
-  for (let i = 0; i < permissions.length; i++) {
-    permissionsStr += '\'' + permissions[i] + '\', ';
-  }
-  permissionsStr += ']';
+  permissionsStr = '[' + permissionsStr + ']';
 
   res.render('logbox.pug', {
     domain,
@@ -69,19 +74,10 @@ app.get('/logbox', function(req, res) {
 });
 
 app.get('/profile', function(req, res) {
-  let permissionsStr = 'Нет разрешений';
+  let permissionsStr = 'No permissions';
 
   if (permissions.length > 0) {
-    permissionsStr = '';
-
-    if (permissions.indexOf('ban') != -1) {
-      permissionsStr += 'Банить пользователей, ';
-    }
-    if (permissions.indexOf('delete') != -1) {
-      permissionsStr += 'Удалять пользователей, ';
-    }
-
-    permissionsStr = permissionsStr.substring(0, permissionsStr.length - 2);
+    permissionsStr = permissions.toString();
   }
 
   res.render('profile.pug', {
@@ -91,4 +87,6 @@ app.get('/profile', function(req, res) {
   });
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('Test app listening on port 3000!');
+});
