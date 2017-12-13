@@ -1,0 +1,124 @@
+msgid "en"
+msgstr "en"
+
+#headerBar
+
+msgid "Guest"
+msgstr "Guest"
+
+msgid "Exit"
+msgstr "Exit"
+
+#main
+
+msgid "Sample program ChatBro"
+msgstr "Sample program ChatBro"
+
+msgid "Single Sign-On"
+msgstr "Single Sign-On"
+
+msgid "Sign In"
+msgstr "Sign In"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "The ability to ban users"
+msgstr "The ability to ban users"
+
+msgid "The ability to delete messages"
+msgstr "The ability to delete messages"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "How is this page implemented on node.js"
+msgstr "How is this page implemented on node.js"
+
+msgid "You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name."
+msgstr "You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name."
+
+msgid "Code snippet"
+msgstr "Code snippet"
+
+msgid "The secret key specified in your account on chatbto.com"
+msgstr "The secret key specified in your account on chatbto.com"
+
+msgid "Calculate the hash and pass parameters on the layout"
+msgstr "Calculate the hash and pass parameters on the layout"
+
+msgid "Unique chat identificator"
+msgstr "Unique chat identificator"
+
+#logbox
+
+msgid "Welcome"
+msgstr "Welcome"
+
+msgid "Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users."
+msgstr "Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users."
+
+msgid "Declare variables"
+msgstr "Declare variables"
+
+msgid "Chat domain"
+msgstr "Chat domain"
+
+msgid "The secret key from the site"
+msgstr "The secret key from the site"
+
+msgid "Your site user id"
+msgstr "Your site user id"
+
+msgid "For example, use random"
+msgstr "For example, use random"
+
+msgid "User name"
+msgstr "User name"
+
+msgid "User avatar url"
+msgstr "User avatar url"
+
+msgid "User profile url"
+msgstr "User profile url"
+
+msgid "Relative reference to the profile"
+msgstr "Relative reference to the profile"
+
+msgid "An string of allowed moderation methods"
+msgstr "An string of allowed moderation methods"
+
+msgid "Read data from the first window"
+msgstr "Read data from the first window"
+
+msgid "'action' of the form"
+msgstr "'action' of the form"
+
+msgid "the input field name"
+msgstr "the input field name"
+
+msgid "checkbox with options 'ban'"
+msgstr "checkbox with options 'ban'"
+
+msgid "checkbox with options delete message"
+msgstr "checkbox with options delete message"
+
+msgid "Example"
+msgstr "Example"
+
+msgid "Calculate the hash"
+msgstr "Calculate the hash"
+
+msgid "Options available: 'bandelete', 'ban' or 'delete'"
+msgstr "Options available: 'bandelete', 'ban' or 'delete'"
+
+#profile
+
+msgid "Profile"
+msgstr "Profile"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Permissions"
+msgstr "permissions"

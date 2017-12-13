@@ -1,0 +1,124 @@
+msgid "en"
+msgstr "ru"
+
+#headerBar
+
+msgid "Guest"
+msgstr "Гость"
+
+msgid "Exit"
+msgstr "Выход"
+
+#main
+
+msgid "Sample program ChatBro"
+msgstr "Пример использования ChatBro"
+
+msgid "Single Sign-On"
+msgstr "Пример прозрачной аутентификации"
+
+msgid "Sign In"
+msgstr "Вход"
+
+msgid "Login"
+msgstr "Логин"
+
+msgid "The ability to ban users"
+msgstr "Возможность банить пользователей"
+
+msgid "The ability to delete messages"
+msgstr "Возможность удалять сообщения"
+
+msgid "Next"
+msgstr "Далее"
+
+msgid "How is this page implemented on node.js"
+msgstr "Как реализована эта страница на node.js"
+
+msgid "You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name."
+msgstr "Сейчас вы гость. Попробуйте написать в чат и увидите предложение зайти через соц. сети или с временным именем. Но если вы заходили в аккаунт на chatbro.com, то будете отображаться под своим именем."
+
+msgid "Code snippet"
+msgstr "Фрагмент кода"
+
+msgid "The secret key specified in your account on chatbto.com"
+msgstr "Секретный ключ указанный в личном кабинете на chatbto.com"
+
+msgid "Calculate the hash and pass parameters on the layout"
+msgstr "Рассчитываем хеш и передаем параметры на разметку"
+
+msgid "Unique chat identificator"
+msgstr "Уникальный идентификатор чата"
+
+#logbox
+
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users."
+msgstr "Теперь ваш ник используется в чате. Нажмите меню чата, чтобы удалять сообщения и банить пользователей."
+
+msgid "Declare variables"
+msgstr "Объявляем переменные"
+
+msgid "Chat domain"
+msgstr "Домен, на котором установлен чат"
+
+msgid "The secret key from the site"
+msgstr "Секретный ключ, полученный на сайте"
+
+msgid "Your site user id"
+msgstr "Id пользователя на сайте установившем чат"
+
+msgid "For example, use random"
+msgstr "Для примера используем рандом"
+
+msgid "User name"
+msgstr "Имя пользователя на сайте, установившем чат"
+
+msgid "User avatar url"
+msgstr "Url аватара пользователя на сайте, установившем чат"
+
+msgid "User profile url"
+msgstr "Ссылка на профиль пользователя на сайте, установившем чат"
+
+msgid "Relative reference to the profile"
+msgstr "Относительная ссылка до профиля"
+
+msgid "An string of allowed moderation methods"
+msgstr "Строка допустимых методов модерации"
+
+msgid "Read data from the first window"
+msgstr "Считываем данные из первого окна"
+
+msgid "'action' of the form"
+msgstr "'action' формы"
+
+msgid "the input field name"
+msgstr "поле ввода имени"
+
+msgid "checkbox with options 'ban'"
+msgstr "checkbox с опцией бана"
+
+msgid "checkbox with options delete message"
+msgstr "checkbox с опцией удаления сообщения"
+
+msgid "Example"
+msgstr "Пример"
+
+msgid "Calculate the hash"
+msgstr "Рассчитаем хеш"
+
+msgid "Options available: 'bandelete', 'ban' or 'delete'"
+msgstr "Доступные варианты: 'bandelete', 'ban' или 'delete'"
+
+#profile
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Permissions"
+msgstr "Разрешения"
