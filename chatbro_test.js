@@ -16,13 +16,13 @@ app.use(express.static(__dirname + '/public'));
 //Chat domain
 const domain = 'localhost';
 //The secret key from the site
-const key = '12b028c2-95e6-4297-8afd-0eb612c3d8fd';
+const key = 'a06992ba-70b6-4fad-aaa9-588dc8b6890b';
 //Your site user id
 let userId = Math.floor((Math.random() * 100) + 1);
 //User name
 let userName;
 //User avatar url
-const urlAvatar = '//localhost:91/images/cat_avatar.jpeg';
+const urlAvatar = '/localhost:91/images/cat_avatar.jpeg';
 //User profile url
 const urlProfile = '/profile';
 //An array of allowed moderation methods
@@ -44,23 +44,28 @@ app.use('/LogIn', bodyParser.urlencoded({
 }));
 
 app.post('/LogIn', function(req, res, next) {
-      userName = req.body.full_name;
-      permissions = [];
-      if (req.body.ban_check == 'on')
-        permissions.push('ban');
-      if (req.body.del_check == 'on')
-        permissions.push('delete');
+  userName = req.body.full_name;
 
-      res.redirect('/logbox');
+  permissions = [];
+  if (req.body.ban_check == 'on')
+    permissions.push('ban');
+  if (req.body.del_check == 'on')
+    permissions.push('delete');
+
+  res.redirect('/logbox');
 });
 
 app.get('/logbox', function(req, res) {
-  let permissionsStr = permissions.toString();
+  let permStr = permissions.toString();
 
   let hash = crypto.createHash('md5').update(domain + userId + userName +
-    urlAvatar + urlProfile + permissionsStr.replace(',', '') + key).digest('hex');
+    urlAvatar + urlProfile + permStr.replace(',', '') + key).digest('hex');
 
-  permissionsStr = '[' + permissionsStr + ']';
+  if (permissions.length > 0) {
+    permStr = '\'' + permStr + '\'';
+    permStr = permStr.replace(',', '\', \'');
+  }
+  permStr = '[' + permStr + ']';
 
   res.render('logbox.pug', {
     domain,
@@ -68,22 +73,22 @@ app.get('/logbox', function(req, res) {
     userName,
     urlAvatar,
     urlProfile,
-    permissionsStr,
+    permStr,
     hash
   });
 });
 
 app.get('/profile', function(req, res) {
-  let permissionsStr = 'No permissions';
+  let permStr = 'No permissions';
 
   if (permissions.length > 0) {
-    permissionsStr = permissions.toString();
+    permStr = permissions.toString();
   }
 
   res.render('profile.pug', {
     userId,
     userName,
-    permissionsStr
+    permStr
   });
 });
 

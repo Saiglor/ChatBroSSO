@@ -14,7 +14,8 @@ html
         },
 
         xhr=new XMLHttpRequest;
-        xhr.withCredentials=!0,xhr.onload=function() {
+        xhr.withCredentials=!0,
+        xhr.onload=function() {
           eval(xhr.responseText)
         },
 
@@ -26,13 +27,13 @@ html
           btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),
           xhr.send()
       }
-      ChatbroLoader({encodedChatId: '6aNy',
+      ChatbroLoader({encodedChatId: '9czk',
         siteDomain: '#{domain}',
         siteUserExternalId: '#{userId}',
         siteUserFullName: '#{userName}',
         siteUserAvatarUrl: '#{urlAvatar}',
         siteUserProfileUrl: '#{urlProfile}',
-        permissions: '#{permissionsStr}',
+        permissions: #{permStr},
         signature: '#{hash}',
         chatLanguage: '#{gettext("en")}'});
         
@@ -141,10 +142,10 @@ html
               | ; 
               span(class='code-form__code-text__comment') //#{gettext('Relative reference to the profile')}
               br
-              span(class='code-form__code-text__comment') //#{gettext('An string of allowed moderation methods')}
+              span(class='code-form__code-text__comment') //#{gettext('An array of allowed moderation methods')}
               br
               span(class='code-form__code-text__pink') let 
-              | permissionsStr;
+              | permissions = [];
               br
               br
               span(class='code-form__code-text__comment') //#{gettext('Read data from the first window')}
@@ -163,9 +164,7 @@ html
               | ; 
               span(class='code-form__code-text__comment') //full_name - #{gettext('the input field name')}
               br
-              span(class='code-form__code-text__tab') permissionsStr = 
-              span(class='code-form__code-text__green') '['
-              | ;
+              span(class='code-form__code-text__tab') permissions = [];
               br
               br
               span(class='code-form__code-text__pink code-form__code-text__tab') if
@@ -176,13 +175,11 @@ html
               | ) 
               span(class='code-form__code-text__comment') //ban_check - #{gettext("checkbox with options 'ban'")}
               br
-              span(class='code-form__code-text__double-tab') permissionsStr += 
-              span(class='code-form__code-text__green') '\''
-              |  + 
+              span(class='code-form__code-text__double-tab') permissions.
+              span(class='code-form__code-text__blue') push
+              | (
               span(class='code-form__code-text__green') 'ban'
-              |  + 
-              span(class='code-form__code-text__green') '\', '
-              | ;
+              | );
               br
               span(class='code-form__code-text__pink code-form__code-text__tab') if
               |  (
@@ -192,19 +189,11 @@ html
               | ) 
               span(class='code-form__code-text__comment') //del_check - #{gettext('checkbox with options delete message')}
               br
-              span(class='code-form__code-text__double-tab') permissionsStr += 
-              span(class='code-form__code-text__green') '\''
-              |  + 
+              span(class='code-form__code-text__double-tab') permissions.
+              span(class='code-form__code-text__blue') push
+              | (
               span(class='code-form__code-text__green') 'delete'
-              |  + 
-              span(class='code-form__code-text__green') '\', '
-              | ;
-              br
-              br
-              span(class='code-form__code-text__tab') permissionsStr += 
-              span(class='code-form__code-text__green') ']'
-              | ; 
-              span(class='code-form__code-text__comment') //#{gettext('Example')}: '[ban, delete]'
+              | );
               br
               br
               span(class='code-form__code-text__red code-form__code-text__tab') res
@@ -217,41 +206,61 @@ html
               | });
               br
               br
-              span(class='code-form__code-text__comment') //#{gettext('Calculate the hash')}
+              span(class='code-form__code-text__comment') //#{gettext('Get string of allowed moderation methods and calculate the hash')}
               br
               br
               span(class='code-form__code-text__pink') let 
-              | permStr = permissionsStr.
+              | permStr = permissions.
               span(class='code-form__code-text__blue') toString
-              | ()
-              br
-              span(class='code-form__code-text__tab') .
-              span(class='code-form__code-text__blue') replace
-              | (
-              span(class='code-form__code-text__green') ', '
-              | , 
-              span(class='code-form__code-text__green') ''
-              | ).
-              span(class='code-form__code-text__blue') replace
-              | (
-              span(class='code-form__code-text__green') '['
-              | , 
-              span(class='code-form__code-text__green') ''
-              | ).
-              span(class='code-form__code-text__blue') replace
-              | (
-              span(class='code-form__code-text__green') ']'
-              | , 
-              span(class='code-form__code-text__green') ''
-              | ); 
-              span(class='code-form__code-text__comment') //#{gettext("Options available: 'bandelete', 'ban' or 'delete'")}
+              | ();
               br
               span(class='code-form__code-text__pink') let 
               | hash = crypto.createHash(
               span(class='code-form__code-text__green') 'md5'
-              | ).update(domain + userId + userName + urlAvatar + urlProfile + permStr + key).digest(
+              | ).update(domain + userId + userName + urlAvatar + urlProfile + permStr.
+              span(class='code-form__code-text__blue') replace
+              | (
+              span(class='code-form__code-text__green') ','
+              | , 
+              span(class='code-form__code-text__green') ''
+              | )
+              | + key).digest(
               span(class='code-form__code-text__green') 'hex'
               | );
+              br
+              span(class='code-form__code-text__pink') if
+              |  (
+              span(class='code-form__code-text__red') permissions
+              | .
+              span(class='code-form__code-text__red') length
+              |  > 0) {
+              br
+              span(class='code-form__code-text__tab') permStr = 
+              span(class='code-form__code-text__green') '\''
+              | + permStr + 
+              span(class='code-form__code-text__green') '\''
+              | ;
+              br
+              span(class='code-form__code-text__tab') permStr = permStr.
+              span(class='code-form__code-text__blue') replace
+              | (
+              span(class='code-form__code-text__green') ','
+              | , 
+              span(class='code-form__code-text__green') '
+              span(class='code-form__code-text__blue') \'
+              span(class='code-form__code-text__green') , 
+              span(class='code-form__code-text__blue') \'
+              span(class='code-form__code-text__green') '
+              | );
+              | 
+              br
+              | }
+              br
+              | permStr = 
+              span(class='code-form__code-text__green') '['
+              | + permStr + 
+              span(class='code-form__code-text__green') ']'
+              | ;
           p(class='code-form-for-title__text-title') #{gettext('Code snippet')} (
             a(href='https://github.com/SviatoIa/ChatBroSSO/blob/11fbc92e157f06879725d980c1e2b19d94f70c37/views/logbox.pug#L29-L37') logbox.pug
             | ):
@@ -283,7 +292,7 @@ html
               | ,
               br
               span(class='code-form__code-text__tab') permissions: 
-              span(class='code-form__code-text__green') \#{permissionsStr}
+              span(class='code-form__code-text__green') \#{permStr}
               | ,
               br
               span(class='code-form__code-text__tab') signature: 

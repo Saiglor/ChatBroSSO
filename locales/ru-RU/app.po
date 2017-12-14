@@ -85,8 +85,8 @@ msgstr "Ссылка на профиль пользователя на сайт�
 msgid "Relative reference to the profile"
 msgstr "Относительная ссылка до профиля"
 
-msgid "An string of allowed moderation methods"
-msgstr "Строка допустимых методов модерации"
+msgid "An array of allowed moderation methods"
+msgstr "Массив допустимых методов модерации"
 
 msgid "Read data from the first window"
 msgstr "Считываем данные из первого окна"
@@ -103,11 +103,8 @@ msgstr "checkbox с опцией бана"
 msgid "checkbox with options delete message"
 msgstr "checkbox с опцией удаления сообщения"
 
-msgid "Example"
-msgstr "Пример"
-
-msgid "Calculate the hash"
-msgstr "Рассчитаем хеш"
+msgid "Get string of allowed moderation methods and calculate the hash"
+msgstr "Получим строку методов модераций и рассчитаем хеш"
 
 msgid "Options available: 'bandelete', 'ban' or 'delete'"
 msgstr "Доступные варианты: 'bandelete', 'ban' или 'delete'"

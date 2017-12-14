@@ -85,8 +85,8 @@ msgstr "User profile url"
 msgid "Relative reference to the profile"
 msgstr "Relative reference to the profile"
 
-msgid "An string of allowed moderation methods"
-msgstr "An string of allowed moderation methods"
+msgid "An array of allowed moderation methods"
+msgstr "An array of allowed moderation methods"
 
 msgid "Read data from the first window"
 msgstr "Read data from the first window"
@@ -103,11 +103,8 @@ msgstr "checkbox with options 'ban'"
 msgid "checkbox with options delete message"
 msgstr "checkbox with options delete message"
 
-msgid "Example"
-msgstr "Example"
-
-msgid "Calculate the hash"
-msgstr "Calculate the hash"
+msgid "Get string of allowed moderation methods and calculate the hash"
+msgstr "Get string of allowed moderation methods and calculate the hash"
 
 msgid "Options available: 'bandelete', 'ban' or 'delete'"
 msgstr "Options available: 'bandelete', 'ban' or 'delete'"
