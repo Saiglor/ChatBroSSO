@@ -23,11 +23,11 @@ msgstr "Sign In"
 msgid "Login"
 msgstr "Login"
 
-msgid "The ability to ban users"
-msgstr "The ability to ban users"
+msgid "Permission to ban users"
+msgstr "Permission to ban users"
 
-msgid "The ability to delete messages"
-msgstr "The ability to delete messages"
+msgid "Permission to delete messages"
+msgstr "Permission to delete messages"
 
 msgid "Next"
 msgstr "Next"
@@ -35,8 +35,8 @@ msgstr "Next"
 msgid "How is this page implemented on node.js"
 msgstr "How is this page implemented on node.js"
 
-msgid "You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name."
-msgstr "You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name."
+msgid "You are a guest now. Try type to the chat and see an offer go via the social network or go with a temporary name. If you logged into the account on chatbro.com, you will be displayed under your personale name."
+msgstr "You are a guest now. Try type to the chat and see an offer go via social network or go with a temporary name. If you logged into the account on chatbro.com, you will be displayed under your personale name."
 
 msgid "Code snippet"
 msgstr "Code snippet"
@@ -47,8 +47,8 @@ msgstr "The secret key specified in your account on chatbto.com"
 msgid "Calculate the hash and pass parameters on the layout"
 msgstr "Calculate the hash and pass parameters on the layout"
 
-msgid "Unique chat identificator"
-msgstr "Unique chat identificator"
+msgid "The unique chat identificator"
+msgstr "The unique chat identificator"
 
 #logbox
 

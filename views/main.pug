@@ -78,10 +78,10 @@ html
 						input(class='registration-form__input-name' placeholder=gettext('Login') name='full_name' required)
 						div(class='registration-form__input-checkbox')
 							input(type='checkbox' name='ban_check' id='check1')
-							label(for='check1') #{gettext('The ability to ban users')} 
+							label(for='check1') #{gettext('Permission to ban users')} 
 						div(class='registration-form__input-checkbox')
 							input(type='checkbox' name='del_check' id='check2')
-							label(for='check2') #{gettext('The ability to delete messages')}
+							label(for='check2') #{gettext('Permission to delete messages')}
 						input(class='registration-form__input-button' type='submit' value=gettext('Next'))
 			div(class='block' style='width: 36%; float: right; margin: 0px; height: 410px')
 				div(class='chatBro')
@@ -91,7 +91,7 @@ html
 		div(class='block')
 			div(class='code')
 				p(class='title') #{gettext('How is this page implemented on node.js')}
-				p(class='text') #{gettext('You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name.')}
+				p(class='text') #{gettext('You are a guest now. Try type to the chat and see an offer go via the social network or go with a temporary name. If you logged into the account on chatbro.com, you will be displayed under your personale name.')}
 				div(class='code-form-for-title')
 					p(class='code-form-for-title__text-title') #{gettext('Code snippet')} (
 						a(href='https://github.com/SviatoIa/ChatBroSSO/blob/11fbc92e157f06879725d980c1e2b19d94f70c37/chatbro_test.js#L16-L40') chatbro_test.js
@@ -153,7 +153,7 @@ html
 							| ({encodedChatId: 
 							span(class='code-form__code-text__green') '6aNy'
 							| , 
-							span(class='code-form__code-text__comment') //#{gettext('Unique chat identificator')}
+							span(class='code-form__code-text__comment') //#{gettext('The unique chat identificator')}
 							br
 							span(class='code-form__code-text__tab') siteDomain: 
 							span(class='code-form__code-text__green') '\#{domain}'

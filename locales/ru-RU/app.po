@@ -23,10 +23,10 @@ msgstr "Вход"
 msgid "Login"
 msgstr "Логин"
 
-msgid "The ability to ban users"
+msgid "Permission to ban users"
 msgstr "Возможность банить пользователей"
 
-msgid "The ability to delete messages"
+msgid "Permission to delete messages"
 msgstr "Возможность удалять сообщения"
 
 msgid "Next"
@@ -35,7 +35,7 @@ msgstr "Далее"
 msgid "How is this page implemented on node.js"
 msgstr "Как реализована эта страница на node.js"
 
-msgid "You are a guest now. Try to write to the chat and see an offer go through social network or go with a temporary name. But if you logged into the account on chatbro.com, you will be displayed under your name."
+msgid "You are a guest now. Try type to the chat and see an offer go via the social network or go with a temporary name. If you logged into the account on chatbro.com, you will be displayed under your personale name."
 msgstr "Сейчас вы гость. Попробуйте написать в чат и увидите предложение зайти через соц. сети или с временным именем. Но если вы заходили в аккаунт на chatbro.com, то будете отображаться под своим именем."
 
 msgid "Code snippet"
@@ -47,7 +47,7 @@ msgstr "Секретный ключ указанный в личном каби�
 msgid "Calculate the hash and pass parameters on the layout"
 msgstr "Рассчитываем хеш и передаем параметры на разметку"
 
-msgid "Unique chat identificator"
+msgid "The unique chat identificator"
 msgstr "Уникальный идентификатор чата"
 
 #logbox
