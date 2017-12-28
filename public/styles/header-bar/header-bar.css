@@ -3,10 +3,18 @@
 	box-shadow: 0 0 30px 2px black;
 	overflow: hidden;
 	width: 100%;
-	min-width: 1150px;
 }
 
 .header-bar__basis {
-	width: 1150px;
 	margin: 0px auto;
+}
+
+@media (min-width: 1150px) {
+	.header-bar__basis {width: 1150px;}
+}
+
+@media (max-width: 1150px) {
+	.header-bar__basis {
+		margin: 0px 2%;
+	}
 }

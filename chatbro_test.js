@@ -5,9 +5,8 @@ const crypto = require('crypto');
 const app = express();
 const bodyParser = require('body-parser');
 
-// Gettext configuration
 app.use(gettext(app, {
-    directory: __dirname + '/locales',
+    directory: __dirname + '/public/locales',
     useAcceptedLanguageHeader: true
 }));
 
@@ -22,7 +21,7 @@ let userId = Math.floor((Math.random() * 100) + 1);
 //User name
 let userName;
 //User avatar url
-const urlAvatar = '/localhost:91/images/cat_avatar.jpeg';
+const urlAvatar = '/' + domain + ':3000/images/cat_avatar.jpeg';
 //User profile url
 const urlProfile = '/profile';
 //An array of allowed moderation methods
@@ -44,15 +43,15 @@ app.use('/LogIn', bodyParser.urlencoded({
 }));
 
 app.post('/LogIn', function(req, res, next) {
-  userName = req.body.full_name;
+      userName = req.body.full_name;
 
-  permissions = [];
-  if (req.body.ban_check == 'on')
-    permissions.push('ban');
-  if (req.body.del_check == 'on')
-    permissions.push('delete');
+      permissions = [];
+      if (req.body.ban_check == 'on')
+        permissions.push('ban');
+      if (req.body.del_check == 'on')
+        permissions.push('delete');
 
-  res.redirect('/logbox');
+      res.redirect('/logbox');
 });
 
 app.get('/logbox', function(req, res) {

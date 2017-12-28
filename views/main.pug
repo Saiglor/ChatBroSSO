@@ -27,12 +27,27 @@ html
 					btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),
 					xhr.send()
 			}
-			ChatbroLoader({encodedChatId: '9czk',
-				siteDomain: '#{domain}',
-				signature: '#{hash}',
-				chatLanguage: '#{gettext("en")}'});
+			ChatbroLoader([{encodedChatId: '9czk',
+					siteDomain: '#{domain}',
+					signature: '#{hash}',
+					chatLanguage: '#{gettext("en")}',
+					isStatic: true,
+					containerDivId: 'chatbro',
+					chatHeight: '370px',
+					chatWidth: '100%',
+					chatState: 'maximized'},
+				{encodedChatId: '9czk',
+					siteDomain: '#{domain}',
+					signature: '#{hash}',
+					chatLanguage: '#{gettext("en")}',
+					isStatic: false,
+					chatHeight: '250px',
+					chatWidth: '370px',
+					chatState: 'minimized'}]);
+					
+		meta(name='viewport' content='width=device-width, initial-scale=0.8')
 				
-		link(rel="shortcut icon" href="/images/favicon_small.png" type="image/png")
+		link(rel='shortcut icon' href='/images/favicon_small.png' type='image/png')
 			
 		link(rel='stylesheet' type='text/css' href='./styles/body/body.css')
 			
@@ -55,12 +70,34 @@ html
 		link(rel='stylesheet' type='text/css' href='./styles/code-form/code-form.css')
 		link(rel='stylesheet' type='text/css' href='./styles/code-form/__code-text/code-form__code-text.css')
 			
+		style(type='text/css').
+			input.pattern {
+				
+			}
+			@media (max-width: 850px) {
+				#chatBroBlock {display: none}
+				#logInBlock {
+					width: 100%;
+					heigth: 100%;
+				}
+				#logInForm {margin: 0px 5px;}
+			}
+			@media (min-width: 850px) {
+				#logInBlock {
+					width: 60%;
+					height: 370px;
+					float: left;
+					margin: 0px;
+				}
+				#logInForm {margin: 0px 12%;}
+			}
+			
 		title #{gettext('Sample program ChatBro')}
 		
 	body(class='body')
 		div(class='header-bar')
 			div(class='header-bar__basis')
-				a(class='header-bar__logo' href="/")
+				a(class='header-bar__logo' href='/')
 					img(class='header-bar__logo__img' src='./images/favicon.png')
 					p(class='header-bar__logo__title') ChatBro
 				div(class='header-bar__link-list')
@@ -70,22 +107,22 @@ html
 						div(style='clear: both')
 		
 		div(class='block' style='box-shadow: 0 0; background-color: #e2e2e2')
-			div(class='block' style='width: 60%; float: left; margin: 0px; height: 410px')
+			div(id='logInBlock' class='block')
 				div(class='form')
 					p(class='title') #{gettext('Single Sign-On')}
-					form(class='registration-form' style='margin: 0px auto; height: 80%' action='/LogIn' method='POST')
+					form(id='logInForm' class='registration-form' action='/LogIn' method='POST')
 						p(class='registration-form__title') #{gettext('Sign In')}
-						input(class='registration-form__input-name' placeholder=gettext('Login') name='full_name' required)
+						input(class='registration-form__input-name' maxlength='15' oninvalid='this.setCustomValidity("0-9, a-z, A-Z")' oninput='this.setCustomValidity("")' placeholder=gettext('Login') name='full_name' required pattern='[0-9A-Za-z]+$')
 						div(class='registration-form__input-checkbox')
 							input(type='checkbox' name='ban_check' id='check1')
-							label(for='check1') #{gettext('Permission to ban users')} 
+							label(for='check1' style='white-space: nowrap') #{gettext('Permission to ban users')} 
 						div(class='registration-form__input-checkbox')
 							input(type='checkbox' name='del_check' id='check2')
-							label(for='check2') #{gettext('Permission to delete messages')}
+							label(for='check2' style='white-space: nowrap') #{gettext('Permission to delete messages')}
 						input(class='registration-form__input-button' type='submit' value=gettext('Next'))
-			div(class='block' style='width: 36%; float: right; margin: 0px; height: 410px')
+			div(id='chatBroBlock' class='block' style='width: 36%; float: right; margin: 0px; height: 370px' media)
 				div(class='chatBro')
-					div(id='chatbro' style='height: 100%')
+					div(id='chatbro' style='height: 370px')
 			div(style='clear: both')
 			
 		div(class='block')
@@ -100,14 +137,15 @@ html
 						p(class='code-form__code-text')
 							span(class='code-form__code-text__pink') const 
 							| domain = 
-							span(class='code-form__code-text__green') 'localhost'
+							span(class='code-form__code-text__green') '#{domain}'
 							| ;
+							br
+							span(class='code-form__code-text__comment') //#{gettext('The secret key specified in your account on chatbto.com')}
 							br
 							span(class='code-form__code-text__pink') const 
 							| secretKey = 
-							span(class='code-form__code-text__green') '12b028c2-95e6-4297-8afd-0eb612c3d8fd'
-							| ; 
-							span(class='code-form__code-text__comment') //#{gettext('The secret key specified in your account on chatbto.com')}
+							span(class='code-form__code-text__green') 'a06992ba-70b6-4fad-aaa9-588dc8b6890b'
+							| ;
 							br
 							br
 							span(class='code-form__code-text__comment') //#{gettext('Calculate the hash and pass parameters on the layout')}
@@ -151,7 +189,7 @@ html
 						p(class='code-form__code-text')
 							span(class='code-form__code-text__blue') ChatbroLoader
 							| ({encodedChatId: 
-							span(class='code-form__code-text__green') '6aNy'
+							span(class='code-form__code-text__green') '9czk'
 							| , 
 							span(class='code-form__code-text__comment') //#{gettext('The unique chat identificator')}
 							br

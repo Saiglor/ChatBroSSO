@@ -1,6 +1,13 @@
 .block {
-  width: 1150px;
   margin: 50px auto;
-  box-shadow: 0.5em 0.9em 50px rgba(30,30,30,0.5);/*rgba(122,122,122,0.5);*/
+  box-shadow: 0.5em 0.9em 50px rgba(30,30,30,0.5);
   background-color: rgb(255, 255, 255);
+}
+
+@media (min-width: 1150px) {
+  .block {width: 1150px;}
+}
+
+@media (max-width: 1150px) {
+  .block {width: 100%;}
 }

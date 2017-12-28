@@ -27,16 +27,38 @@ html
           btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),
           xhr.send()
       }
-      ChatbroLoader({encodedChatId: '9czk',
-        siteDomain: '#{domain}',
-        siteUserExternalId: '#{userId}',
-        siteUserFullName: '#{userName}',
-        siteUserAvatarUrl: '#{urlAvatar}',
-        siteUserProfileUrl: '#{urlProfile}',
-        permissions: #{permStr},
-        signature: '#{hash}',
-        chatLanguage: '#{gettext("en")}'});
+      ChatbroLoader([{
+          encodedChatId: '9czk',
+          siteDomain: '#{domain}',
+          siteUserExternalId: '#{userId}',
+          siteUserFullName: '#{userName}',
+          siteUserAvatarUrl: '#{urlAvatar}',
+          siteUserProfileUrl: '#{urlProfile}',
+          permissions: #{permStr},
+          signature: '#{hash}',
+          chatLanguage: '#{gettext("en")}',
+          isStatic: true,
+          containerDivId: 'chatbro',
+          chatState: 'maximized',
+          chatHeight: '100%',
+          chatWidth: '100%'
+        },
+        {
+          encodedChatId: '9czk',
+          siteDomain: '#{domain}',
+          siteUserExternalId: '#{userId}',
+          siteUserFullName: '#{userName}',
+          siteUserAvatarUrl: '#{urlAvatar}',
+          siteUserProfileUrl: '#{urlProfile}',
+          permissions: #{permStr},
+          signature: '#{hash}',
+          chatLanguage: '#{gettext("en")}',
+          isStatic: false,
+          chatState: 'minimized'
+        }]);
         
+    meta(name='viewport' content='width=device-width, initial-scale=0.8')
+      
     link(rel="shortcut icon" href="/images/favicon_small.png" type="image/png")
       
     link(rel='stylesheet' type='text/css' href='./styles/body/body.css')
@@ -68,8 +90,8 @@ html
           img(class='header-bar__logo__img' src='./images/favicon.png')
           p(class='header-bar__logo__title') ChatBro
         div(class='header-bar__link-list')
-          div(style='float: left; height: 4em')
-            a(class='header-bar__link-list__form' href='/profile')
+          div(style='float: left; height: 4em; overflow: hidden; text-overflow: ellipsis;')
+            a(class='header-bar__link-list__form' href='/profile' title=userName)
               img(class='header-bar__link-list__form__img' src='./images/cat_avatar.jpeg')
               p(class='header-bar__link-list__form__link') #{userName}
               div(style='clear: both')
@@ -80,7 +102,7 @@ html
           div(style='clear: both')
          
     div(class='block')
-      div(class='form' style='height: 368px')
+      div(class='form')
         p(class='title') #{gettext('Welcome')}, #{userName}!
         p(class='text') #{gettext('Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users.')}
         div(class='chatBro' style='height: 270px')
@@ -102,14 +124,14 @@ html
               br
               span(class='code-form__code-text__pink') const 
               | domain = 
-              span(class='code-form__code-text__green') 'localhost'
+              span(class='code-form__code-text__green') '#{domain}'
               | ;
               br
               span(class='code-form__code-text__comment') //#{gettext('The secret key from the site')}
               br
               span(class='code-form__code-text__pink') const 
               | key = 
-              span(class='code-form__code-text__green') '12b028c2-95e6-4297-8afd-0eb612c3d8fd'
+              span(class='code-form__code-text__green') 'a06992ba-70b6-4fad-aaa9-588dc8b6890b'
               | ;
               br
               span(class='code-form__code-text__comment') //#{gettext('Your site user id')}
@@ -131,14 +153,14 @@ html
               br
               span(class='code-form__code-text__pink') const 
               | urlAvatar = 
-              span(class='code-form__code-text__green') 'http://localhost:91/images/cat_avatar.jpeg'
+              span(class='code-form__code-text__green') '#{urlAvatar}'
               | ;
               br
               span(class='code-form__code-text__comment') //#{gettext('User profile url')}
               br
               span(class='code-form__code-text__pink') const 
               | urlProfile = 
-              span(class='code-form__code-text__green') '/profile'
+              span(class='code-form__code-text__green') '#{urlProfile}'
               | ; 
               span(class='code-form__code-text__comment') //#{gettext('Relative reference to the profile')}
               br
@@ -217,7 +239,9 @@ html
               span(class='code-form__code-text__pink') let 
               | hash = crypto.createHash(
               span(class='code-form__code-text__green') 'md5'
-              | ).update(domain + userId + userName + urlAvatar + urlProfile + permStr.
+              | ).update(domain + userId + userName + urlAvatar +
+              br
+              span(class='code-form__code-text__tab') urlProfile + permStr.
               span(class='code-form__code-text__blue') replace
               | (
               span(class='code-form__code-text__green') ','
@@ -268,7 +292,7 @@ html
             p(class='code-form__code-text')
               span(class='code-form__code-text__blue') ChatbroLoader
               | ({encodedChatId: 
-              span(class='code-form__code-text__green') '6aNy'
+              span(class='code-form__code-text__green') '9czk'
               | ,
               br
               span(class='code-form__code-text__tab') siteDomain: 
