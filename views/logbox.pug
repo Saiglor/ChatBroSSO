@@ -104,7 +104,7 @@ html
     div(class='block')
       div(class='form')
         p(class='title') #{gettext('Welcome')}, #{userName}!
-        p(class='text') #{gettext('Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users.')}
+        p(class='text') #{gettext('Now your nickname will be used in the chat. If select the relevant paragraphs, it is possible to delete posts or ban users by clicking on the chat menu.')}
         div(class='chatBro' style='height: 270px')
           div(id='chatbro' style='height: 100%')
         
@@ -247,10 +247,10 @@ html
               span(class='code-form__code-text__green') ','
               | , 
               span(class='code-form__code-text__green') ''
-              | )
-              | + key).digest(
+              | ) + key).digest(
               span(class='code-form__code-text__green') 'hex'
               | );
+              br
               br
               span(class='code-form__code-text__pink') if
               |  (
@@ -276,7 +276,6 @@ html
               span(class='code-form__code-text__blue') \'
               span(class='code-form__code-text__green') '
               | );
-              | 
               br
               | }
               br

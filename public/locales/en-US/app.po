@@ -55,8 +55,8 @@ msgstr "The unique chat identificator"
 msgid "Welcome"
 msgstr "Welcome"
 
-msgid "Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users."
-msgstr "Now your nickname will be used in the chat. Click on the chat menu to delete messages or ban users."
+msgid "Now your nickname will be used in the chat. If select the relevant paragraphs, it is possible to delete posts or ban users by clicking on the chat menu."
+msgstr "Now your nickname will be used in the chat. If select the relevant paragraphs, it is possible to delete posts or ban users by clicking on the chat menu."
 
 msgid "Declare variables"
 msgstr "Declare variables"
